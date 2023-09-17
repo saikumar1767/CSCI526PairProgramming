@@ -5,11 +5,12 @@ using UnityEngine;
 public class Stick2Controller : MonoBehaviour
 {
     [SerializeField] private float _speed = 5.0f; // Adjust the speed as needed
-    private Rigidbody2D cubeTransform;
+    public Rigidbody2D bodyRigidbody;
+    public float rotationSpeed = 45f; // Adjust the rotation speed as needed
 
     void Start()
     {
-        cubeTransform = transform.parent.GetComponent<Rigidbody2D>();
+       
     }
     void Update()
     {
@@ -26,19 +27,7 @@ public class Stick2Controller : MonoBehaviour
 
         // Apply the rotation to the stick
         transform.Rotate(Vector3.forward, horizontalInput * _speed * Time.deltaTime);
-    }
 
-    void FixedUpdate()
-    {
-        MovePlayer();
-    }
-
-    private void MovePlayer()
-    {
-        // Calculate movement direction based on the rotated stick
-        Vector2 moveDirection = transform.up * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal");
-
-        // Apply movement to the cube
-        cubeTransform.AddForce(moveDirection * Time.deltaTime, ForceMode2D.Force);
+        bodyRigidbody.angularVelocity = horizontalInput * rotationSpeed;
     }
 }
