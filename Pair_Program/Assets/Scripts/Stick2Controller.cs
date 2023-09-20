@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Stick2Controller : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5.0f; // Adjust the speed as needed
-    public Rigidbody2D bodyRigidbody;
+    public float StickRotateSpeed = 5.0f; // Adjust the speed as needed
     public float rotationSpeed = 45f; // Adjust the rotation speed as needed
+    public Rigidbody2D bodyRigidbody; // Drag and drop the "Body" Rigidbody2D here
+    public float minLength = 0.0f; // The minimum length of the stick
+    public float maxLength = 5.0f; // The maximum length of the stick
+    public float lengthChangeSpeed = 0.1f; // The speed at which the length changes
 
     void Start()
     {
@@ -14,6 +17,7 @@ public class Stick2Controller : MonoBehaviour
     }
     void Update()
     {
+        // Rotate
         float horizontalInput = 0f;
 
         if (Input.GetKey(KeyCode.A))
@@ -26,8 +30,26 @@ public class Stick2Controller : MonoBehaviour
         }
 
         // Apply the rotation to the stick
-        transform.Rotate(Vector3.forward, horizontalInput * _speed * Time.deltaTime);
+        transform.Rotate(Vector3.forward, horizontalInput * StickRotateSpeed * Time.deltaTime);
 
         bodyRigidbody.angularVelocity = horizontalInput * rotationSpeed;
+
+        // Flexible Length
+        // Get the current scale of the stick
+        Vector3 currentScale = transform.localScale;
+
+        // Check for input to increase or decrease the length
+        if (Input.GetKey(KeyCode.W))
+        {
+            currentScale.y += lengthChangeSpeed * Time.deltaTime;
+            currentScale.y = Mathf.Clamp(currentScale.y, minLength, maxLength);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            currentScale.y -= lengthChangeSpeed * Time.deltaTime;
+            currentScale.y = Mathf.Clamp(currentScale.y, minLength, maxLength);
+        }
+        // Apply the new scale to the stick
+        transform.localScale = currentScale;
     }
 }

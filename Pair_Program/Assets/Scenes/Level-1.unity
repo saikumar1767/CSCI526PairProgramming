@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a93cd9b50b8bd489a6baaa973e148e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1228180434}
+  player: {fileID: 1630395660}
 --- !u!1 &684165298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,9 +1176,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e4a6684d7c3eb4d83c43d0fd1bd3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 50
+  StickRotateSpeed: 50
   rotationSpeed: 25
   bodyRigidbody: {fileID: 1630395661}
+  minLength: 0
+  maxLength: 5
+  lengthChangeSpeed: 0.1
 --- !u!1 &943865583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,9 +1312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7213b3dffd5f92468ffdaa2291373e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 50
-  bodyRigidbody: {fileID: 1630395661}
+  StickRotateSpeed: 50
   rotationSpeed: 25
+  bodyRigidbody: {fileID: 1630395661}
+  minLength: 0
+  maxLength: 5
+  lengthChangeSpeed: 0.1
 --- !u!1 &1228180433
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,7 +2692,6 @@ GameObject:
   - component: {fileID: 2046705075}
   - component: {fileID: 2046705080}
   - component: {fileID: 2046705078}
-  - component: {fileID: 2046705077}
   - component: {fileID: 2046705076}
   m_Layer: 0
   m_Name: Stick1
@@ -2755,18 +2760,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2046705077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046705074}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4677c8428d92d463b9f1ebda551e414d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &2046705078
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
