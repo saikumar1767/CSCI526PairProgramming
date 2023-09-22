@@ -8,7 +8,7 @@ public class Stick2Controller : MonoBehaviour
     public float rotationSpeed = 45f; // Adjust the rotation speed as needed
     public Rigidbody2D bodyRigidbody; // Drag and drop the "Body" Rigidbody2D here
     public float minLength = 0.0f; // The minimum length of the stick
-    public float maxLength = 5.0f; // The maximum length of the stick
+    public float maxLength = 1.0f; // The maximum length of the stick
     public float lengthChangeSpeed = 0.1f; // The speed at which the length changes
 
     void Start()
